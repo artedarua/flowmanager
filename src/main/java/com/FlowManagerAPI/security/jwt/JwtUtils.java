@@ -23,7 +23,6 @@ import io.jsonwebtoken.security.Keys;
 @Component
 public class JwtUtils {
 	
-	@Value("${flowmanager.senhaJwt}")
 	private String senhaJwt;
 	
 	private Date tempoExpiracaoJwt  =new Date(30000);
