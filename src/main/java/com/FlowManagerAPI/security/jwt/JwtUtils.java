@@ -23,6 +23,7 @@ import io.jsonwebtoken.security.Keys;
 @Component
 public class JwtUtils {
 	
+	@Value("$flowmanager.jwtSecret}")
 	private String senhaJwt;
 	
 	private Date tempoExpiracaoJwt  =new Date(30000);
@@ -52,10 +53,10 @@ public class JwtUtils {
 	            Jwts.parserBuilder().setSigningKey(getSignInKey()).build().parseClaimsJws(authToken);
 	            return true;
 	        } catch (MalformedJwtException e) {
-	            System.out.print(" " + e.getMessage());
+	            System.out.print(" mal formado " + e.getMessage());
 	            return false;
 	        } catch (Exception e) {
-	            System.out.print(" " + e.getMessage());
+	            System.out.print("toke invalido " + e.getMessage());
 	            return false;
 	        }
 	    

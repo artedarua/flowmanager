@@ -29,7 +29,4 @@ public class AuthController {
 	public ResponseEntity<?> loginUsuario(@RequestBody AuthenticationDto authDto) {
 		return ResponseEntity.ok(authService.login(authDto));
 	}
-
-	
-	
 }
