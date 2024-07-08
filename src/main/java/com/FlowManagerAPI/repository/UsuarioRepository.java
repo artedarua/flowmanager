@@ -11,7 +11,6 @@ import com.FlowManagerAPI.model.UsuarioModel;
 @Repository
 public interface UsuarioRepository extends JpaRepository <UsuarioModel, Long>  {
 
-	
 	Optional<UsuarioModel> findByLoginUsuario(String loginUsuario);
 
 }

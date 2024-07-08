@@ -1,5 +1,7 @@
 package com.FlowManagerAPI.model;
 
+import java.sql.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,16 +31,21 @@ public class ProdutoModel {
 	@Column(name = "fma1_nome_produto")
 	private String nomeProduto;
 	
-	@Column(name = "fma1_partnumber_produto")
-	private String partNumberProduto;
-
-	@Column(name = "fma1_contato_produto")
-	private String contatoProduto;
+	@Column(name = "fma1_data_revisao_desenho_produto")
+	private Date dataRevisaoDesenhoProduto;
+	
+	@Column(name = "fma1_num_revisao_desenho_produto")
+	private String numRevisaoDesenhoProduto;
+	
+	@Column(name = "fma1_data_revisao_3d_produto")
+	private String dateRevisao3dProduto;
+	
+	@Column(name = "fma1_data_cadastro_produto")
+	private Date dataCadastroProduto;
 
 	@ManyToOne
-	@JoinColumn(name = "fma1_fornecedor_produto", referencedColumnName = "fma2_id_fornecedor")
-    private FornecedorModel fornecedor;
+	@JoinColumn(name = "fma1_roteiro_produto", referencedColumnName = "fma4_id_roteiro")
+    private RoteiroModel roteiro;
 		
-	@Column(name = "fma1_tipo_produto")
-	private String tipoProduto;
+
 }

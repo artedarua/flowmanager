@@ -17,10 +17,10 @@ public class UserDetailsImpl implements UserDetails {
 	private String login;
 	
 	private String email;
-	
-	
+		
 	private String password;
 	
+	private String tipo;
 	
 	public static UserDetailsImpl build (UsuarioModel usuario) {
 		return new UserDetailsImpl(usuario.getIdUsuario(), 
@@ -28,12 +28,13 @@ public class UserDetailsImpl implements UserDetails {
 				                   usuario.getLoginUsuario(), 
 				                   usuario.getEmailUsuario(),
 				                   usuario.getSenhaUsuario(),
+				                   usuario.getTipoUsuario(),
 				                   new ArrayList<>());
 	};
 
 	
 	
-	public UserDetailsImpl(Long id, String nome, String login, String email, String passaword,
+	public UserDetailsImpl(Long id, String nome, String login, String email, String passaword, String tipo,
 			Collection<? extends GrantedAuthority> authorities) {
 		super();
 		this.id = id;
@@ -41,6 +42,7 @@ public class UserDetailsImpl implements UserDetails {
 		this.login = login;
 		this.email = email;
 		this.password =passaword;
+		this.tipo = tipo;
 		this.authorities = authorities;
 	}
 
@@ -61,6 +63,10 @@ public class UserDetailsImpl implements UserDetails {
 
 	public String getPassword() {
 		return password;
+	}
+	
+	public String getTipo() {
+		return tipo;
 	}
 
 	@Override

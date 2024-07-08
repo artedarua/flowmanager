@@ -33,7 +33,7 @@ public class AuthService {
 		
 		 String token = jwtUtils.generateTokenFronUserDetailsImpl(userAuth);
 		 
-		 AccessDto accessDto = new AccessDto(token);
+		 AccessDto accessDto = new AccessDto(token,userAuth.getTipo());
 		
 		 return accessDto;
 	}catch (BadCredentialsException e) {

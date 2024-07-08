@@ -36,11 +36,5 @@ public class UsuarioController {
 		return ResponseEntity.ok(usuarioService.save(usuario));
 	}
 	
-	
-	/*@GetMapping("/all")
-	public ResponseEntity<List<ProdutoModel>> alunosTodos() {
-		return ResponseEntity.ok(usuarioService.produtoByAll());
-	}
-	*/
 
 }
