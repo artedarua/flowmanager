@@ -22,6 +22,8 @@ public class UserDetailsImpl implements UserDetails {
 	
 	private String tipo;
 	
+	private String ativo;
+	
 	public static UserDetailsImpl build (UsuarioModel usuario) {
 		return new UserDetailsImpl(usuario.getIdUsuario(), 
 				                   usuario.getNomeUsuario(), 
@@ -29,12 +31,13 @@ public class UserDetailsImpl implements UserDetails {
 				                   usuario.getEmailUsuario(),
 				                   usuario.getSenhaUsuario(),
 				                   usuario.getTipoUsuario(),
+				                   usuario.getAtivoUsuario(),
 				                   new ArrayList<>());
 	};
 
 	
 	
-	public UserDetailsImpl(Long id, String nome, String login, String email, String passaword, String tipo,
+	public UserDetailsImpl(Long id, String nome, String login, String email, String passaword, String tipo, String ativo,
 			Collection<? extends GrantedAuthority> authorities) {
 		super();
 		this.id = id;
@@ -44,6 +47,7 @@ public class UserDetailsImpl implements UserDetails {
 		this.password =passaword;
 		this.tipo = tipo;
 		this.authorities = authorities;
+		this.ativo = ativo;
 	}
 
 
@@ -68,7 +72,10 @@ public class UserDetailsImpl implements UserDetails {
 	public String getTipo() {
 		return tipo;
 	}
-
+	
+	public String getAtivo() {
+		return ativo;
+	}
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub

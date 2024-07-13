@@ -4,11 +4,19 @@ public class AccessDto {
 	
 private String token;
 private String tipoUsuario;
+private String ativoUsuario;
 
 	public AccessDto(String token,String tipoUsuario) {
 		super();
 		this.token = token;
 		this.tipoUsuario=tipoUsuario;
+	}
+	
+	public AccessDto(String token, String tipoUsuario, String ativoUsuario) {
+		super();
+		this.token = token;
+		this.tipoUsuario = tipoUsuario;
+		this.ativoUsuario = ativoUsuario;
 	}
 
 	public String getToken() {
@@ -26,4 +34,13 @@ private String tipoUsuario;
 	public void setTipoUsuario(String tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
+
+	public String getAtivoUsuario() {
+		return ativoUsuario;
+	}
+
+	public void setAtivoUsuario(String ativoUsuario) {
+		this.ativoUsuario = ativoUsuario;
+	}
+	
 }
