@@ -5,6 +5,7 @@ public class AuthenticationDto {
 	private String userName;
 	private String senha;
 	private String tipo;
+	private String ativo;
 	
 	
 	public String getTipo() {
@@ -24,6 +25,12 @@ public class AuthenticationDto {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	public String getAtivo() {
+		return ativo;
+	}
+	public void setAtivo(String ativo) {
+		this.ativo = ativo;
 	}
 
 

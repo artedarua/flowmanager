@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,24 +23,43 @@ public class UsuarioModel {
 	@Column(name = "fma5_id_Usuario")
 	private Long idUsuario;
 	
+	@NotNull
 	@Column(name = "fma5_nome_usuario")
 	private String nomeUsuario;
 	
-	@Column(name = "fma5_login_usuario")
+	@NotNull
+	@Column(name = "fma5_login_usuario", unique = true)
 	private String loginUsuario;
 	
-	@Column(name = "fma5_email_usuario")
+	@NotNull
+	@Column(name = "fma5_email_usuario", unique = true)
 	private String emailUsuario;
 	
+	@NotNull
 	@Column(name = "fma5_senha_usuario")
 	private String senhaUsuario;
 	
 	@Column(name = "fma5_obs_usuario")
 	private String obsUsuario;
 	
+	@NotNull
 	@Column(name = "fma5_tipo_usuario")
 	private String tipoUsuario;
-
+	
+	@NotNull
+	@Column(name = "fma5_secreto_usuario")
+	private String secretoUsuario;
+	
+	
+	@Column(name = "fma5_celular_usuario")
+	private String celularUsuario;
+	
+	@Column(name = "fma5_acesso_usuario")
+	private String acessoUsuario;
+	
+	@Column(name = "fma5_ativo_usuario")
+	private String ativoUsuario;
+	
 	public Long getIdUsuario() {
 		return idUsuario;
 	}
@@ -95,6 +115,39 @@ public class UsuarioModel {
 	public void setTipoUsuario(String tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
+
+	public String getSecretoUsuario() {
+		return secretoUsuario;
+	}
+
+	public void setSecretoUsuario(String secretoUsuario) {
+		this.secretoUsuario = secretoUsuario;
+	}
+
+	public String getCelularUsuario() {
+		return celularUsuario;
+	}
+
+	public void setCelularUsuario(String celularUsuario) {
+		this.celularUsuario = celularUsuario;
+	}
+
+	public String getAcessoUsuario() {
+		return acessoUsuario;
+	}
+
+	public void setAcessoUsuario(String acessoUsuario) {
+		this.acessoUsuario = acessoUsuario;
+	}
+
+	public String getAtivoUsuario() {
+		return ativoUsuario;
+	}
+
+	public void setAtivoUsuario(String ativoUsuario) {
+		this.ativoUsuario = ativoUsuario;
+	}
+	
 	
 	
 
