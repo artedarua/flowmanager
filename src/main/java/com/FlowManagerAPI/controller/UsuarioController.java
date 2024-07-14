@@ -34,7 +34,6 @@ public class UsuarioController {
 
 	@PostMapping("/save")
 	public ResponseEntity<UsuarioModel> Save(@RequestBody UsuarioModel usuario) {
-
 		usuario.setSenhaUsuario(passwordEncoder.encode(usuario.getSenhaUsuario()));
 		return ResponseEntity.ok(usuarioService.save(usuario));
 	}
@@ -48,5 +47,16 @@ public class UsuarioController {
 	public ResponseEntity<UsuarioModel> usuarioDesativar(@PathVariable String usuarioLogin) {
 		return ResponseEntity.ok(usuarioService.updateDesativa(usuarioLogin));
 	}
+	
+	@PutMapping("/atualiza")
+	public ResponseEntity<Boolean> atualizarSenha(@RequestBody UsuarioModel usuario) {
+    	usuario.setSenhaUsuario(passwordEncoder.encode(usuario.getSenhaUsuario()));
+		return ResponseEntity.ok(usuarioService.AtualizarSenha(usuario));
+	}
 
+	@GetMapping("/recuperar/{usuarioLogin}/{secreta}")
+	public ResponseEntity<Boolean> recuperarUsuarioByLogin(@PathVariable String usuarioLogin,@PathVariable String secreta) {
+		return ResponseEntity.ok(usuarioService.RecuperarUsuarioByLogin(usuarioLogin,secreta));
+	}
+	
 }
