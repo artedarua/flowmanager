@@ -22,14 +22,22 @@ public class UsuarioService {
 	@Autowired
 	private EnviarEmailService emailSend;
 	
-			
+	@Autowired
+	private LogService logBd ;
+	
 	public UsuarioModel save(UsuarioModel usuarioModel) {
 		
 		UsuarioModel usuario =usuarioModel;
+		//setar usuario ativo
+		usuario.setAtivoUsuario("A");
+		
 		String Conteudo= "Foi Realizado o cadastro de seu Usuario para acesso ao sistema 'FlowManager'. O Seu Usuario é '"+usuario.getLoginUsuario()+","
 				+ " em caso de perda de senha favor utilizar a palavra secreta '"+usuario.getSecretoUsuario()+" juntamente com seu loginn para trocar a senha";
 		
 		emailSend.EnviarEmail(usuario.getEmailUsuario(), " FlowManager-Sistema", Conteudo);
+		
+		//log
+		logBd.save("usuario Criado");
 		
 		return usuarioRepository.save(usuario);
 	}
@@ -46,37 +54,53 @@ public class UsuarioService {
 		return usuarioRepository.save(usuario);
 	}
 	
-	public boolean AtualizarSenha(UsuarioModel usuarioModel) {
+	public String AtualizarSenha(UsuarioModel usuarioModel) {
 		
 		UsuarioModel usuario =usuarioModel;
+		UsuarioModel usuarioEmail = (UsuarioModel) usuarioRepository.findByLoginRecuperar(usuario.getLoginUsuario());
+		
+		usuario.setEmailUsuario(usuarioEmail.getEmailUsuario());
 		String Conteudo= "Foi realizada a atualização da senha para o usaurio '"+usuario.getLoginUsuario()+"'";		
 		emailSend.EnviarEmail(usuario.getEmailUsuario(), " FlowManager-Sistema", Conteudo);
 
 		int validarRetorno = usuarioRepository.atualizarSenhar(usuario.getLoginUsuario(),usuario.getSenhaUsuario());
 		
 		if(validarRetorno>0) {
+			return "OK";
+		}else {
+			return "NOK";
+		}		
+	}
+	
+	public boolean AtualizarInfo(UsuarioModel usuarioModel) {
+		
+		UsuarioModel usuario =usuarioModel;
+		String Conteudo= "Foi realizada a atualização do usuario '"+usuario.getLoginUsuario()+"'"
+				+" "+usuario.getCelularUsuario()+" "+usuario.getNivelAcessoUsuario()+ " "+usuario.getEmailUsuario()+ " "+usuario.getSecretoUsuario();		
+		emailSend.EnviarEmail(usuario.getEmailUsuario(), " FlowManager-Sistema", Conteudo);
+
+		int validarRetorno = usuarioRepository.atualizarInfo(usuario.getLoginUsuario(),
+				usuario.getCelularUsuario(),usuario.getNivelAcessoUsuario(), usuario.getEmailUsuario(), usuario.getSecretoUsuario());
+		
+		if(validarRetorno>0) {
 			return true;
 		}else {
 			return false;
-		}
-		
+		}		
 	}
-	
-	public boolean  RecuperarUsuarioByLogin( String usuarioLogin, String secreta) {
+	public String  RecuperarUsuarioByLogin( String usuarioLogin, String secreta) {
 		UsuarioModel usuario= new UsuarioModel();
 		
-		usuario = (UsuarioModel) usuarioRepository.findByLoginDesativar(usuarioLogin);
+		usuario = (UsuarioModel) usuarioRepository.findByLoginRecuperar(usuarioLogin);
 		
 		if (usuario.getSecretoUsuario().equals(secreta)) {
+		
 			
-			String Conteudo= "Seu usuario'"+usuario.getLoginUsuario()+" foi cadastrado com a palvara secreta "+usuario.getSecretoUsuario()+" favor utilizar";
-			
-			emailSend.EnviarEmail(usuario.getEmailUsuario(), " FlowManager-Sistema", Conteudo);
-			return true;
+			return "OK";
 			
 		}
 		else {
-			return false;
+			return "NOK";
 		}
 		
 		

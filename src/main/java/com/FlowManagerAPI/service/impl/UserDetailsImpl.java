@@ -20,7 +20,7 @@ public class UserDetailsImpl implements UserDetails {
 		
 	private String password;
 	
-	private String tipo;
+	private String nivelAcesso;
 	
 	private String ativo;
 	
@@ -30,14 +30,14 @@ public class UserDetailsImpl implements UserDetails {
 				                   usuario.getLoginUsuario(), 
 				                   usuario.getEmailUsuario(),
 				                   usuario.getSenhaUsuario(),
-				                   usuario.getTipoUsuario(),
+				                   usuario.getNivelAcessoUsuario(),
 				                   usuario.getAtivoUsuario(),
 				                   new ArrayList<>());
 	};
 
 	
 	
-	public UserDetailsImpl(Long id, String nome, String login, String email, String passaword, String tipo, String ativo,
+	public UserDetailsImpl(Long id, String nome, String login, String email, String passaword, String nivelAcesso, String ativo,
 			Collection<? extends GrantedAuthority> authorities) {
 		super();
 		this.id = id;
@@ -45,7 +45,7 @@ public class UserDetailsImpl implements UserDetails {
 		this.login = login;
 		this.email = email;
 		this.password =passaword;
-		this.tipo = tipo;
+		this.nivelAcesso = nivelAcesso;
 		this.authorities = authorities;
 		this.ativo = ativo;
 	}
@@ -69,8 +69,8 @@ public class UserDetailsImpl implements UserDetails {
 		return password;
 	}
 	
-	public String getTipo() {
-		return tipo;
+	public String getnivelAcesso() {
+		return nivelAcesso;
 	}
 	
 	public String getAtivo() {

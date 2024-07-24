@@ -18,7 +18,7 @@ public class MailConfig {
         mailSender.setPort(587);
 
         mailSender.setUsername("gmskill@gmail.com");
-        mailSender.setPassword("wsuzeiiobccnlzsw");
+        mailSender.setPassword("stuvhhuqinptmczd");
 
         Properties props = mailSender.getJavaMailProperties();
         props.setProperty("mail.smtp.ssl.trust", "*"); // Esta linha desativa a verificação de certificado

@@ -43,19 +43,20 @@ public class RoteiroModel {
 	private Date dataEntregaRoteiro;
 	
 	@ManyToOne
-	@JoinColumn(name = "fma4_material_roteiro", referencedColumnName = "fma3_id_material")
+	@JoinColumn(name = "fma4_material_roteiro", referencedColumnName = "fma3_id_material", nullable = true)
     private MaterialModel material;
 	
 	@ManyToOne
-	@JoinColumn(name = "fma4_hardware_roteiro", referencedColumnName = "fma8_id_hardware")
+	@JoinColumn(name = "fma4_hardware_roteiro", referencedColumnName = "fma8_id_hardware", nullable = true)
     private HardwareModel hardware;
 	
 	@ManyToOne
-	@JoinColumn(name = "fma4_feramental_roteiro", referencedColumnName = "fma7_id_ferramental")
+	@JoinColumn(name = "fma4_feramental_roteiro", referencedColumnName = "fma7_id_ferramental", nullable = true)
     private FerramentalModel ferramental;
 	
+	
 	@ManyToOne
-	@JoinColumn(name = "fma4_maqinasct_roteiro", referencedColumnName = "fma10_id_maquinasCT")
+	@JoinColumn(name = "fma4_maqinasct_roteiro", referencedColumnName = "fma10_id_maquinasCT", nullable = true)
     private MaquinasCTModel maquinasCT;
 		
 }

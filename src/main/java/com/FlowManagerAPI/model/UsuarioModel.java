@@ -43,9 +43,10 @@ public class UsuarioModel {
 	private String obsUsuario;
 	
 	@NotNull
-	@Column(name = "fma5_tipo_usuario")
-	private String tipoUsuario;
-	
+	@Column(name = "fma5_nivelAcesso_usuario")
+	private String nivelAcessoUsuario;
+
+
 	@NotNull
 	@Column(name = "fma5_secreto_usuario")
 	private String secretoUsuario;
@@ -108,13 +109,6 @@ public class UsuarioModel {
 		this.obsUsuario = obsUsuario;
 	}
 
-	public String getTipoUsuario() {
-		return tipoUsuario;
-	}
-
-	public void setTipoUsuario(String tipoUsuario) {
-		this.tipoUsuario = tipoUsuario;
-	}
 
 	public String getSecretoUsuario() {
 		return secretoUsuario;
@@ -148,7 +142,13 @@ public class UsuarioModel {
 		this.ativoUsuario = ativoUsuario;
 	}
 	
-	
+	public String getNivelAcessoUsuario() {
+		return nivelAcessoUsuario;
+	}
+
+	public void setNivelAcessoUsuario(String nivelAcessoUsuario) {
+		this.nivelAcessoUsuario = nivelAcessoUsuario;
+	}
 	
 
 }
