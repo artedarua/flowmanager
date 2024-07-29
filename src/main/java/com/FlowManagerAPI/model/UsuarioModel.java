@@ -53,8 +53,6 @@ public class UsuarioModel {
 	@Column(name = "fma5_celular_usuario")
 	private String celularUsuario;
 
-	@Column(name = "fma5_acesso_usuario")
-	private String acessoUsuario;
 
 	@Column(name = "fma5_ativo_usuario")
 	private String ativoUsuario;
@@ -123,13 +121,6 @@ public class UsuarioModel {
 		this.celularUsuario = celularUsuario;
 	}
 
-	public String getAcessoUsuario() {
-		return acessoUsuario;
-	}
-
-	public void setAcessoUsuario(String acessoUsuario) {
-		this.acessoUsuario = acessoUsuario;
-	}
 
 	public String getAtivoUsuario() {
 		return ativoUsuario;
