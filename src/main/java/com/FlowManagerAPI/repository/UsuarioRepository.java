@@ -32,9 +32,15 @@ public interface UsuarioRepository extends JpaRepository <UsuarioModel, Long>  {
 
 @Transactional
 @Modifying
-	@Query("UPDATE UsuarioModel u SET u.celularUsuario = :celularUsuario, u.nivelAcessoUsuario = :nivelAcessoUsuario, u.emailUsuario = :emailUsuario, u.secretoUsuario = :secretoUsuario  "
-			+ " WHERE u.loginUsuario = :loginUsuario")
-	int atualizarInfo(@Param("loginUsuario") String loginUsuario, @Param("celularUsuario") String celularUsuario,  
-			@Param("nivelAcessoUsuario") String nivelAcessoUsuario, @Param("emailUsuario") String emailUsuario,
-			@Param("secretoUsuario") String secretoUsuario);
+@Query("UPDATE UsuarioModel u SET "
+        + "u.celularUsuario = CASE WHEN :celularUsuario IS NOT NULL THEN :celularUsuario ELSE u.celularUsuario END, "
+        + "u.nivelAcessoUsuario = CASE WHEN :nivelAcessoUsuario IS NOT NULL THEN :nivelAcessoUsuario ELSE u.nivelAcessoUsuario END, "
+        + "u.emailUsuario = CASE WHEN :emailUsuario IS NOT NULL THEN :emailUsuario ELSE u.emailUsuario END, "
+        + "u.secretoUsuario = CASE WHEN :secretoUsuario IS NOT NULL THEN :secretoUsuario ELSE u.secretoUsuario END "
+        + "WHERE u.loginUsuario = :loginUsuario")
+int atualizarInfo(@Param("loginUsuario") String loginUsuario, 
+                  @Param("celularUsuario") String celularUsuario,  
+                  @Param("nivelAcessoUsuario") String nivelAcessoUsuario, 
+                  @Param("emailUsuario") String emailUsuario,
+                  @Param("secretoUsuario") String secretoUsuario);
 }
