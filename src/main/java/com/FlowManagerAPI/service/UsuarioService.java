@@ -72,20 +72,22 @@ public class UsuarioService {
 		}		
 	}
 	
-	public boolean AtualizarInfo(UsuarioModel usuarioModel) {
+	public String AtualizarInfo(UsuarioModel usuarioModel) {
 		
 		UsuarioModel usuario =usuarioModel;
 		String Conteudo= "Foi realizada a atualização do usuario '"+usuario.getLoginUsuario()+"'"
 				+" "+usuario.getCelularUsuario()+" "+usuario.getNivelAcessoUsuario()+ " "+usuario.getEmailUsuario()+ " "+usuario.getSecretoUsuario();		
 		emailSend.EnviarEmail(usuario.getEmailUsuario(), " FlowManager-Sistema", Conteudo);
 
-		int validarRetorno = usuarioRepository.atualizarInfo(usuario.getLoginUsuario(),
-				usuario.getCelularUsuario(),usuario.getNivelAcessoUsuario(), usuario.getEmailUsuario(), usuario.getSecretoUsuario());
-		
+		int validarRetorno =  usuarioRepository.atualizarInfo(usuarioModel.getLoginUsuario(), 
+				usuarioModel.getCelularUsuario() != null ? usuarioModel.getCelularUsuario() : null, 
+						usuarioModel.getNivelAcessoUsuario() != null ? usuarioModel.getNivelAcessoUsuario() : null, 
+								usuarioModel.getEmailUsuario() != null ? usuarioModel.getEmailUsuario() : null, 
+										usuarioModel.getSecretoUsuario() != null ? usuarioModel.getSecretoUsuario() : null);
 		if(validarRetorno>0) {
-			return true;
+			return "OK";
 		}else {
-			return false;
+			return "NOK";
 		}		
 	}
 	public String  RecuperarUsuarioByLogin( String usuarioLogin, String secreta) {
