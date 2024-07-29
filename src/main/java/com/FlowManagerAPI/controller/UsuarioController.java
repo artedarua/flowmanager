@@ -55,7 +55,7 @@ public class UsuarioController {
 	}
 	
 	@PutMapping("/atualiza/info")
-	public ResponseEntity<Boolean> atualizarInfo(@RequestBody UsuarioModel usuario) {
+	public ResponseEntity<String> atualizarInfo(@RequestBody UsuarioModel usuario) {
 		return ResponseEntity.ok(usuarioService.AtualizarInfo(usuario));
 	}
 	@PostMapping("/recuperar/{usuarioLogin}/{secreta}")
