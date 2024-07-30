@@ -16,51 +16,47 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class UsuarioModel {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "fma5_id_Usuario")
 	private Long idUsuario;
-	
+
 	@NotNull
 	@Column(name = "fma5_nome_usuario")
 	private String nomeUsuario;
-	
+
 	@NotNull
 	@Column(name = "fma5_login_usuario", unique = true)
 	private String loginUsuario;
-	
+
 	@NotNull
-	@Column(name = "fma5_email_usuario", unique = true)
+	@Column(name = "fma5_email_usuario")
 	private String emailUsuario;
-	
+
 	@NotNull
 	@Column(name = "fma5_senha_usuario")
 	private String senhaUsuario;
-	
+
 	@Column(name = "fma5_obs_usuario")
 	private String obsUsuario;
-	
+
 	@NotNull
 	@Column(name = "fma5_nivelAcesso_usuario")
 	private String nivelAcessoUsuario;
 
-
 	@NotNull
 	@Column(name = "fma5_secreto_usuario")
 	private String secretoUsuario;
-	
-	
+
 	@Column(name = "fma5_celular_usuario")
 	private String celularUsuario;
-	
-	@Column(name = "fma5_acesso_usuario")
-	private String acessoUsuario;
-	
+
 	@Column(name = "fma5_ativo_usuario")
 	private String ativoUsuario;
-	
+
 	public Long getIdUsuario() {
 		return idUsuario;
 	}
@@ -109,7 +105,6 @@ public class UsuarioModel {
 		this.obsUsuario = obsUsuario;
 	}
 
-
 	public String getSecretoUsuario() {
 		return secretoUsuario;
 	}
@@ -126,14 +121,6 @@ public class UsuarioModel {
 		this.celularUsuario = celularUsuario;
 	}
 
-	public String getAcessoUsuario() {
-		return acessoUsuario;
-	}
-
-	public void setAcessoUsuario(String acessoUsuario) {
-		this.acessoUsuario = acessoUsuario;
-	}
-
 	public String getAtivoUsuario() {
 		return ativoUsuario;
 	}
@@ -141,7 +128,7 @@ public class UsuarioModel {
 	public void setAtivoUsuario(String ativoUsuario) {
 		this.ativoUsuario = ativoUsuario;
 	}
-	
+
 	public String getNivelAcessoUsuario() {
 		return nivelAcessoUsuario;
 	}
@@ -149,6 +136,5 @@ public class UsuarioModel {
 	public void setNivelAcessoUsuario(String nivelAcessoUsuario) {
 		this.nivelAcessoUsuario = nivelAcessoUsuario;
 	}
-	
 
 }

@@ -22,19 +22,17 @@ import com.FlowManagerAPI.service.RoteiroService;
 @RequestMapping("/flowmanager/api/roteiro")
 public class RoteiroController {
 
-	
 	@Autowired
 	private RoteiroService roteiroService;
-	
-	
+
 	@PostMapping("/save")
 	public ResponseEntity<RoteiroModel> save(@RequestBody RoteiroModel roteiro) {
 		return ResponseEntity.ok(roteiroService.save(roteiro));
 	}
 
 	@GetMapping("/id/{id}")
-	public ResponseEntity<Optional<RoteiroModel>> RoteiroById(@PathVariable Long id) {
-		return ResponseEntity.ok(roteiroService.RoteiroById(id));
+	public ResponseEntity<Optional<RoteiroModel>> roteiroById(@PathVariable Long id) {
+		return ResponseEntity.ok(roteiroService.roteiroById(id));
 	}
-	
+
 }

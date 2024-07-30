@@ -13,13 +13,12 @@ public class ClienteService {
 
 	@Autowired
 	private ClienteRepository clienteRepository;
-	
+
 	public ClienteModel save(ClienteModel clienteModel) {
 		return clienteRepository.save(clienteModel);
 	}
-	
-	public Optional<ClienteModel> ClienteById(Long idCliente) {
+
+	public Optional<ClienteModel> clienteById(Long idCliente) {
 		return clienteRepository.findById(idCliente);
 	}
 }
-	

@@ -13,16 +13,15 @@ import com.FlowManagerAPI.repository.ContatoRepository;
 @Service
 public class ContatoService {
 
-
 	@Autowired
 	private ContatoRepository contatoRepository;
-	
+
 	public ContatoModel save(ContatoModel contato) {
 		return contatoRepository.save(contato);
 	}
-	
+
 	public Optional<ContatoModel> contatoeById(Long idContato) {
 		return contatoRepository.findById(idContato);
 	}
-	
+
 }

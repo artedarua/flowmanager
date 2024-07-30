@@ -15,11 +15,11 @@ public class OperacaoService {
 
 	@Autowired
 	private OperacaoRepository operacaoRepository;
-	
+
 	public OperacaoModel save(OperacaoModel operacaoModel) {
 		return operacaoRepository.save(operacaoModel);
 	}
-	
+
 	public Optional<OperacaoModel> operacaoById(Long id) {
 		return operacaoRepository.findById(id);
 	}

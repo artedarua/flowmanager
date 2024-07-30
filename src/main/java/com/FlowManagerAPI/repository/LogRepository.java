@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import com.FlowManagerAPI.model.LogModel;
 
 @Repository
-public interface LogRepository extends JpaRepository <LogModel, Long>  {
+public interface LogRepository extends JpaRepository<LogModel, Long> {
 
 }

@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 import com.FlowManagerAPI.model.FerramentalModel;
 
 @Repository
-public interface FerramentalRepository extends JpaRepository <FerramentalModel, Long>  {
+public interface FerramentalRepository extends JpaRepository<FerramentalModel, Long> {
 
 }

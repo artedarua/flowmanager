@@ -41,25 +41,24 @@ public class WebConfigSecurity {
 			return null;
 		}
 	}
-	
+
 	@Bean
 	public AuthFilterToken authFilterToken() {
 		return new AuthFilterToken();
 	}
-	
+
 	@Bean
-	public SecurityFilterChain  filterChain (HttpSecurity http) throws Exception   {
-		
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
 		http.cors(Customizer.withDefaults());
-		http.csrf(csrf -> csrf.disable())	
-			.exceptionHandling(exception -> exception.authenticationEntryPoint(unathourizedHandler))
-			.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-			.authorizeHttpRequests(auth -> auth.requestMatchers("/**").permitAll());
-											
-		
+		http.csrf(csrf -> csrf.disable())
+				.exceptionHandling(exception -> exception.authenticationEntryPoint(unathourizedHandler))
+				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+				.authorizeHttpRequests(auth -> auth.requestMatchers("/**").permitAll());
+
 		http.addFilterBefore(authFilterToken(), UsernamePasswordAuthenticationFilter.class);
-		
+
 		return http.build();
-		
+
 	}
 }

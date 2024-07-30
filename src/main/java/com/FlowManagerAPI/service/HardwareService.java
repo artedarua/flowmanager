@@ -12,17 +12,16 @@ import com.FlowManagerAPI.repository.HardwareRepository;
 
 @Service
 public class HardwareService {
-	
+
 	@Autowired
 	private HardwareRepository hardwareRepository;
-	
+
 	public HardwareModel save(HardwareModel hardwareModel) {
 		return hardwareRepository.save(hardwareModel);
 	}
-	
+
 	public Optional<HardwareModel> HardwareById(Long idHardware) {
 		return hardwareRepository.findById(idHardware);
 	}
-
 
 }

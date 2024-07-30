@@ -13,15 +13,14 @@ import com.FlowManagerAPI.repository.PedidoVendaRepository;
 @Service
 public class PedidoVendaService {
 
-	
 	@Autowired
 	private PedidoVendaRepository pedidoVendaRepository;
-	
+
 	public PedidoVendaModel save(PedidoVendaModel pedidoVendaModel) {
 		return pedidoVendaRepository.save(pedidoVendaModel);
 	}
-	
-	public Optional<PedidoVendaModel> PedidoVendaById(Long idPedidoVendas) {
+
+	public Optional<PedidoVendaModel> pedidoVendaById(Long idPedidoVendas) {
 		return pedidoVendaRepository.findById(idPedidoVendas);
 	}
 

@@ -7,6 +7,6 @@ import com.FlowManagerAPI.model.FerramentalModel;
 import com.FlowManagerAPI.model.HardwareModel;
 
 @Repository
-public interface HardwareRepository extends JpaRepository <HardwareModel, Long> {
+public interface HardwareRepository extends JpaRepository<HardwareModel, Long> {
 
 }

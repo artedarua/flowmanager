@@ -23,19 +23,17 @@ import com.FlowManagerAPI.service.ProdutoService;
 @RequestMapping("/flowmanager/api/ferramental")
 public class FerramentalController {
 
-	
 	@Autowired
 	private FerramentalService ferramentalService;
-	
-	
+
 	@PostMapping("/save")
 	public ResponseEntity<FerramentalModel> save(@RequestBody FerramentalModel ferramental) {
 		return ResponseEntity.ok(ferramentalService.save(ferramental));
 	}
 
 	@GetMapping("/id/{id}")
-	public ResponseEntity<Optional<FerramentalModel>> FerramentalById(@PathVariable Long id) {
+	public ResponseEntity<Optional<FerramentalModel>> ferramentalById(@PathVariable Long id) {
 		return ResponseEntity.ok(ferramentalService.feraamentalById(id));
 	}
-	
+
 }

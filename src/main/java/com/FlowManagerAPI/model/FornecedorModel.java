@@ -22,16 +22,16 @@ public class FornecedorModel {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "fma2_id_fornecedor")
 	private Long idFornecedor;
-	
+
 	@Column(name = "fma2_nome_fornecedor")
 	private String nomeFornecedor;
-	
+
 	@Column(name = "fma2_cnpj_fornecedor")
 	private String cnpjFornecedor;
-	
+
 	@Column(name = "fma2_contato_fornecedor")
 	private String contatoFornecedor;
-	
+
 	@Column(name = "fma2_obs_fornecedor")
 	private String obsFornecedor;
 
@@ -74,7 +74,5 @@ public class FornecedorModel {
 	public void setObsFornecedor(String obsFornecedor) {
 		this.obsFornecedor = obsFornecedor;
 	}
-	
-	
-	
+
 }

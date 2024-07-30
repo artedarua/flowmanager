@@ -7,7 +7,6 @@ import com.FlowManagerAPI.model.MaquinasCTModel;
 import com.FlowManagerAPI.model.MedidasModel;
 
 @Repository
-public interface MedidasRepository extends JpaRepository <MedidasModel, Long> {
+public interface MedidasRepository extends JpaRepository<MedidasModel, Long> {
 
 }
-

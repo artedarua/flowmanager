@@ -7,6 +7,6 @@ import com.FlowManagerAPI.model.ClienteModel;
 import com.FlowManagerAPI.model.FerramentalModel;
 
 @Repository
-public interface ClienteRepository extends JpaRepository <ClienteModel, Long> {
+public interface ClienteRepository extends JpaRepository<ClienteModel, Long> {
 
 }

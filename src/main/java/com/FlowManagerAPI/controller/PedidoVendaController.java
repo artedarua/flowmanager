@@ -22,18 +22,16 @@ import com.FlowManagerAPI.service.PedidoVendaService;
 @RequestMapping("/flowmanager/api/pedidovenda")
 public class PedidoVendaController {
 
-	
 	@Autowired
 	private PedidoVendaService pedidoVendaService;
-	
-	
+
 	@PostMapping("/save")
 	public ResponseEntity<PedidoVendaModel> save(@RequestBody PedidoVendaModel pedidoVendaModel) {
 		return ResponseEntity.ok(pedidoVendaService.save(pedidoVendaModel));
 	}
 
 	@GetMapping("/id/{id}")
-	public ResponseEntity<Optional<PedidoVendaModel>> PedidoVendaById(@PathVariable Long id) {
-		return ResponseEntity.ok(pedidoVendaService.PedidoVendaById(id));
+	public ResponseEntity<Optional<PedidoVendaModel>> pedidoVendaById(@PathVariable Long id) {
+		return ResponseEntity.ok(pedidoVendaService.pedidoVendaById(id));
 	}
 }

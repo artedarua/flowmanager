@@ -12,7 +12,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Entity
 @Table(name = "fma11t_Cliente")
 @Data
@@ -21,24 +20,23 @@ import lombok.NoArgsConstructor;
 
 public class ClienteModel {
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "fma11_id_cliente")
 	private Long idCliente;
-	
+
 	@Column(name = "fma11_nome_cliente")
 	private String nomeCliente;
-	
+
 	@Column(name = "fma11_segmento_cliente")
 	private String segmentoCliente;
-	
+
 	@Column(name = "fma11_obs_cliente")
 	private String obsClienteCliente;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "fma11_contato_cliente", referencedColumnName = "fma12_id_contatocliente")
-    private ContatoModel contatoCliente;
+	private ContatoModel contatoCliente;
 
 	public Long getIdCliente() {
 		return idCliente;
@@ -80,5 +78,4 @@ public class ClienteModel {
 		this.contatoCliente = contatoCliente;
 	}
 
-	
 }

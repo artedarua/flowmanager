@@ -47,20 +47,22 @@ public class UsuarioController {
 	public ResponseEntity<UsuarioModel> usuarioDesativa3r(@PathVariable String usuarioLogin) {
 		return ResponseEntity.ok(usuarioService.updateDesativa(usuarioLogin));
 	}
-	
+
 	@PutMapping("/atualizar")
 	public ResponseEntity<String> atualizarSenha(@RequestBody UsuarioModel usuario) {
-    	usuario.setSenhaUsuario(passwordEncoder.encode(usuario.getSenhaUsuario()));
-		return ResponseEntity.ok(usuarioService.AtualizarSenha(usuario));
+		usuario.setSenhaUsuario(passwordEncoder.encode(usuario.getSenhaUsuario()));
+		return ResponseEntity.ok(usuarioService.atualizarSenha(usuario));
 	}
-	
+
 	@PutMapping("/atualiza/info")
-	public ResponseEntity<Boolean> atualizarInfo(@RequestBody UsuarioModel usuario) {
-		return ResponseEntity.ok(usuarioService.AtualizarInfo(usuario));
+	public ResponseEntity<String> atualizarInfo(@RequestBody UsuarioModel usuario) {
+		return ResponseEntity.ok(usuarioService.atualizarInfo(usuario));
 	}
+
 	@PostMapping("/recuperar/{usuarioLogin}/{secreta}")
-	public ResponseEntity<String> recuperarUsuarioByLogin(@PathVariable String usuarioLogin,@PathVariable String secreta) {
-		return ResponseEntity.ok(usuarioService.RecuperarUsuarioByLogin(usuarioLogin,secreta));
+	public ResponseEntity<String> recuperarUsuarioByLogin(@PathVariable String usuarioLogin,
+			@PathVariable String secreta) {
+		return ResponseEntity.ok(usuarioService.recuperarUsuarioByLogin(usuarioLogin, secreta));
 	}
-	
+
 }

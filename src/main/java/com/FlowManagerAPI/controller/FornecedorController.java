@@ -22,25 +22,23 @@ import com.FlowManagerAPI.service.ProdutoService;
 @RestController
 @RequestMapping("/flowmanager/api/fornecedor")
 public class FornecedorController {
-	
+
 	@Autowired
 	private FornecedorService fornecedorService;
-	
-	
+
 	@PostMapping("/save")
 	public ResponseEntity<FornecedorModel> save(@RequestBody FornecedorModel fornecedor) {
 		return ResponseEntity.ok(fornecedorService.save(fornecedor));
 	}
 
-	
 	@GetMapping("/all")
 	public ResponseEntity<List<FornecedorModel>> fornecedorByAll() {
 		return ResponseEntity.ok(fornecedorService.fornecedorByAll());
 	}
-	
+
 	@GetMapping("/id/{idFornecedor}")
-	public ResponseEntity<Optional<FornecedorModel>> idFornecedorFind(@PathVariable("idFornecedor")Long idFornecedor) {
+	public ResponseEntity<Optional<FornecedorModel>> idFornecedorFind(@PathVariable("idFornecedor") Long idFornecedor) {
 		return ResponseEntity.ok(fornecedorService.fornecedorById(idFornecedor));
-	
+
 	}
 }

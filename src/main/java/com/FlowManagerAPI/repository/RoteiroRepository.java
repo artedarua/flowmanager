@@ -7,7 +7,6 @@ import com.FlowManagerAPI.model.MedidasModel;
 import com.FlowManagerAPI.model.RoteiroModel;
 
 @Repository
-public interface RoteiroRepository extends JpaRepository <RoteiroModel, Long> {
+public interface RoteiroRepository extends JpaRepository<RoteiroModel, Long> {
 
 }
-

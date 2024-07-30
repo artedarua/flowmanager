@@ -10,11 +10,11 @@ import com.FlowManagerAPI.model.UsuarioModel;
 import com.FlowManagerAPI.repository.UsuarioRepository;
 
 @Service
-public class UserDetailServiceImpl implements UserDetailsService{
+public class UserDetailServiceImpl implements UserDetailsService {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-	
+
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		UsuarioModel usuario = usuarioRepository.findByLoginUsuario(username).get();

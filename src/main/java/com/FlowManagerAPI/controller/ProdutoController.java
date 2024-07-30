@@ -18,22 +18,18 @@ import com.FlowManagerAPI.service.ProdutoService;
 @RestController
 @RequestMapping("/flowmanager/api/produto")
 public class ProdutoController {
-	
+
 	@Autowired
 	private ProdutoService produtoService;
-	
-	
+
 	@PostMapping("/save")
 	public ResponseEntity<ProdutoModel> save(@RequestBody ProdutoModel produto) {
 		return ResponseEntity.ok(produtoService.save(produto));
 	}
 
-	
 	@GetMapping("/all")
 	public ResponseEntity<List<ProdutoModel>> produtosTodos() {
 		return ResponseEntity.ok(produtoService.produtoByAll());
 	}
-	
-	
-	
+
 }
