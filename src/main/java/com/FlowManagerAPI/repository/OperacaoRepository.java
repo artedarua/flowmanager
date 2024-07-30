@@ -8,7 +8,6 @@ import com.FlowManagerAPI.model.PedidoVendaModel;
 
 @Repository
 
-public interface OperacaoRepository  extends JpaRepository <OperacaoModel, Long> {
+public interface OperacaoRepository extends JpaRepository<OperacaoModel, Long> {
 
 }
-

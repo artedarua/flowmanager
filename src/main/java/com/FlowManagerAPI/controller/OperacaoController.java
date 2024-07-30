@@ -16,16 +16,15 @@ public class OperacaoController {
 
 	@Autowired
 	private ClienteService clienteService;
-	
-	
+
 	@PostMapping("/save")
 	public ResponseEntity<ClienteModel> save(@RequestBody ClienteModel cliente) {
 		return ResponseEntity.ok(clienteService.save(cliente));
 	}
-	
+
 	@GetMapping("/id/{id}")
-	public ResponseEntity<Optional<ClienteModel>> ClienteById(@PathVariable Long id) {
-		return ResponseEntity.ok(clienteService.ClienteById(id));
+	public ResponseEntity<Optional<ClienteModel>> clienteById(@PathVariable Long id) {
+		return ResponseEntity.ok(clienteService.clienteById(id));
 	}
-	
+
 }

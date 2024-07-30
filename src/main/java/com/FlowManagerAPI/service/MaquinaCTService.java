@@ -13,15 +13,14 @@ import com.FlowManagerAPI.repository.MaquinaCTRepository;
 @Service
 public class MaquinaCTService {
 
-	
 	@Autowired
 	private MaquinaCTRepository maquinaCTRepository;
-	
+
 	public MaquinasCTModel save(MaquinasCTModel maquinasCTModel) {
 		return maquinaCTRepository.save(maquinasCTModel);
 	}
-	
-	public Optional<MaquinasCTModel> MaquinaCTById(Long idMaquinaCT) {
+
+	public Optional<MaquinasCTModel> maquinaCTById(Long idMaquinaCT) {
 		return maquinaCTRepository.findById(idMaquinaCT);
 	}
 }

@@ -21,24 +21,24 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class FerramentalModel {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "fma7_id_ferramental")
 	private Long idFerramental;
-	
+
 	@Column(name = "fma7_classe_ferramental")
 	private String classeFerramental;
-	
+
 	@Column(name = "fma7_descricao_ferramental")
 	private String descricaoFerramental;
-	
+
 	@Column(name = "fma7_peso_desenho")
 	private String pesoFerramental;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "fma7_usuario_roteiro", referencedColumnName = "fma5_id_Usuario")
-    private UsuarioModel usuarioFerramental;
+	private UsuarioModel usuarioFerramental;
 
 	public Long getIdFerramental() {
 		return idFerramental;

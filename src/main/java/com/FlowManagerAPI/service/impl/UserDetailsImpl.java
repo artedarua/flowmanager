@@ -11,54 +11,46 @@ import com.FlowManagerAPI.model.UsuarioModel;
 public class UserDetailsImpl implements UserDetails {
 
 	private Long id;
-	
+
 	private String nome;
 
 	private String login;
-	
+
 	private String email;
-		
+
 	private String password;
-	
+
 	private String nivelAcesso;
-	
+
 	private String ativo;
-	
-	public static UserDetailsImpl build (UsuarioModel usuario) {
-		return new UserDetailsImpl(usuario.getIdUsuario(), 
-				                   usuario.getNomeUsuario(), 
-				                   usuario.getLoginUsuario(), 
-				                   usuario.getEmailUsuario(),
-				                   usuario.getSenhaUsuario(),
-				                   usuario.getNivelAcessoUsuario(),
-				                   usuario.getAtivoUsuario(),
-				                   new ArrayList<>());
+
+	public static UserDetailsImpl build(UsuarioModel usuario) {
+		return new UserDetailsImpl(usuario.getIdUsuario(), usuario.getNomeUsuario(), usuario.getLoginUsuario(),
+				usuario.getEmailUsuario(), usuario.getSenhaUsuario(), usuario.getNivelAcessoUsuario(),
+				usuario.getAtivoUsuario(), new ArrayList<>());
 	};
 
-	
-	
-	public UserDetailsImpl(Long id, String nome, String login, String email, String passaword, String nivelAcesso, String ativo,
-			Collection<? extends GrantedAuthority> authorities) {
+	public UserDetailsImpl(Long id, String nome, String login, String email, String passaword, String nivelAcesso,
+			String ativo, Collection<? extends GrantedAuthority> authorities) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.login = login;
 		this.email = email;
-		this.password =passaword;
+		this.password = passaword;
 		this.nivelAcesso = nivelAcesso;
 		this.authorities = authorities;
 		this.ativo = ativo;
 	}
 
+	private Collection<? extends GrantedAuthority> authorities;
 
-
-	private  Collection<? extends GrantedAuthority> authorities;
-	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
 		return authorities;
 	}
+
 	@Override
 	public String getUsername() {
 
@@ -68,14 +60,15 @@ public class UserDetailsImpl implements UserDetails {
 	public String getPassword() {
 		return password;
 	}
-	
+
 	public String getnivelAcesso() {
 		return nivelAcesso;
 	}
-	
+
 	public String getAtivo() {
 		return ativo;
 	}
+
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
@@ -99,8 +92,5 @@ public class UserDetailsImpl implements UserDetails {
 		// TODO Auto-generated method stub
 		return true;
 	}
-
-
-	
 
 }

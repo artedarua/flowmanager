@@ -24,17 +24,14 @@ public class ContatoController {
 
 	@Autowired
 	private ContatoService contatoService;
-	
-	
+
 	@PostMapping("/save")
 	public ResponseEntity<ContatoModel> save(@RequestBody ContatoModel contato) {
 		return ResponseEntity.ok(contatoService.save(contato));
 	}
-	
+
 	@GetMapping("/id/{id}")
-	public ResponseEntity<Optional<ContatoModel>> ContatoBYyId(@PathVariable Long id) {
+	public ResponseEntity<Optional<ContatoModel>> contatoBYyId(@PathVariable Long id) {
 		return ResponseEntity.ok(contatoService.contatoeById(id));
 	}
-	
-
 }

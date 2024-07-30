@@ -22,13 +22,13 @@ public class ContatoModel {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "fma12_id_contatocliente")
 	private Long idContatoCliente;
-	
+
 	@Column(name = "fma12_contato_ContatoCliente")
 	private String contatoContatoCliente;
-	
+
 	@Column(name = "fma12_email_ContatoCliente")
 	private String emailContatocliente;
-	
+
 	@Column(name = "fma12_tel_ContatoCliente")
 	private String telContatocliente;
 
@@ -63,5 +63,5 @@ public class ContatoModel {
 	public void setTelContatocliente(String telContatocliente) {
 		this.telContatocliente = telContatocliente;
 	}
-	
+
 }

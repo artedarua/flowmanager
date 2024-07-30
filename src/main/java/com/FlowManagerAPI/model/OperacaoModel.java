@@ -22,28 +22,26 @@ public class OperacaoModel {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "fma13_id_operacao")
 	private Long idOperacao;
-	
+
 	@Column(name = "fma13_seq_operacao")
-	private String  seqOperacao;
-	
+	private String seqOperacao;
+
 	@Column(name = "fma13_cod_operacao")
-	private String  codOperacao;
-	
+	private String codOperacao;
+
 	@Column(name = "fma13_desc_operacao")
 	private String descOperacao;
-	
+
 	@Column(name = "fma13_tempo_setup_operacao")
 	private double tempoSetupOperacao;
-	
+
 	@Column(name = "fma13_tempo_peca_operacao")
 	private double tempoPecaOperacao;
-	
+
 	@Column(name = "fma13_total_operacao")
 	private double tempoTotalOperacao;
-	
+
 	@Column(name = "fma13_status_operacao")
 	private double statusOperacao;
-	
-	
-}
 
+}

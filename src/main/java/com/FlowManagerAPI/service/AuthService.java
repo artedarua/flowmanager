@@ -20,44 +20,42 @@ import com.FlowManagerAPI.utils.dataFormatadaUtils;
 
 @Service
 public class AuthService {
-    
+
 	@Autowired
 	private AuthenticationManager authenticationManager;
-	
+
 	@Autowired
 	private JwtUtils jwtUtils;
-		
-   
+
 	@Autowired
-	private LogService logBd ;
+	private LogService logBd;
 
-	public AccessDto login (AuthenticationDto authDto) {
-	
+	public AccessDto login(AuthenticationDto authDto) {
+
 		try {
-		UsernamePasswordAuthenticationToken  usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(authDto.getUserName(), authDto.getSenha());
-		
-		Authentication authentication = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
-		
-		UserDetailsImpl userAuth = 	(UserDetailsImpl) authentication.getPrincipal();
-		
-		 String token = jwtUtils.generateTokenFronUserDetailsImpl(userAuth);
-		 
-		 AccessDto accessDto = new AccessDto(token,userAuth.getnivelAcesso(),userAuth.getAtivo());
-		
-		 //log 
-		
-         logBd.save(authDto.getUserName()+" login ");
-         
-         return accessDto;
-	}catch (BadCredentialsException e) {
-		   //((org.apache.logging.log4j.Logger) logger).error("Login failed for user {}", authDto.getUserName(), e);
-		   logBd.save(authDto.getUserName()+" login " +e); 
+			UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
+					authDto.getUserName(), authDto.getSenha());
 
-         	return null;
+			Authentication authentication = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
+
+			UserDetailsImpl userAuth = (UserDetailsImpl) authentication.getPrincipal();
+
+			String token = jwtUtils.generateTokenFronUserDetailsImpl(userAuth);
+
+			AccessDto accessDto = new AccessDto(token, userAuth.getnivelAcesso(), userAuth.getAtivo());
+
+			// log
+
+			logBd.save(authDto.getUserName() + " login ");
+
+			return accessDto;
+		} catch (BadCredentialsException e) {
+			// ((org.apache.logging.log4j.Logger) logger).error("Login failed for user {}",
+			// authDto.getUserName(), e);
+			logBd.save(authDto.getUserName() + " login " + e);
+
+			return null;
+		}
+
 	}
-		
-
 }
-}
-
-	

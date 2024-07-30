@@ -17,19 +17,18 @@ import com.FlowManagerAPI.repository.ProdutoRepository;
 @Service
 public class FornecedorService {
 
-	
 	@Autowired
 	private FornecedorRepository fornecedorRepository;
-	
+
 	public FornecedorModel save(FornecedorModel FornecedorModel) {
 		return fornecedorRepository.save(FornecedorModel);
 	}
-	
+
 	public List<FornecedorModel> fornecedorByAll() {
 		return fornecedorRepository.findAll();
 	}
-	
-	public Optional <FornecedorModel> fornecedorById(Long fornecedorId) {
+
+	public Optional<FornecedorModel> fornecedorById(Long fornecedorId) {
 		return fornecedorRepository.findById(fornecedorId);
 	}
 }

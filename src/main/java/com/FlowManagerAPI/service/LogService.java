@@ -1,6 +1,5 @@
 package com.FlowManagerAPI.service;
 
-
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +16,11 @@ public class LogService {
 
 	public void save(String conteudo) {
 		LogModel log = new LogModel();
-		
-        LocalDateTime dateAtual = LocalDateTime.now();
+
+		LocalDateTime dateAtual = LocalDateTime.now();
 		log.setDataLog(dateAtual);
 		log.setConteudoLog(conteudo);
-		
+
 		logRepository.save(log);
 	}
 }

@@ -7,6 +7,6 @@ import com.FlowManagerAPI.model.ContatoModel;
 import com.FlowManagerAPI.model.FerramentalModel;
 
 @Repository
-public interface ContatoRepository extends JpaRepository <ContatoModel, Long> {
+public interface ContatoRepository extends JpaRepository<ContatoModel, Long> {
 
 }

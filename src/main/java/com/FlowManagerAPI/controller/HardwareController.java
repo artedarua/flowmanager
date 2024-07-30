@@ -26,17 +26,15 @@ public class HardwareController {
 
 	@Autowired
 	private HardwareService hardwareService;
-	
-	
+
 	@PostMapping("/save")
 	public ResponseEntity<HardwareModel> save(@RequestBody HardwareModel hardware) {
 		return ResponseEntity.ok(hardwareService.save(hardware));
 	}
 
-	
 	@GetMapping("/id/{id}")
-	public ResponseEntity<Optional<HardwareModel>> HardwareById(@PathVariable Long id) {
+	public ResponseEntity<Optional<HardwareModel>> hardwareById(@PathVariable Long id) {
 		return ResponseEntity.ok(hardwareService.HardwareById(id));
 	}
-	
+
 }

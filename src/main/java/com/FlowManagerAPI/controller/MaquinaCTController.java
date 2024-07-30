@@ -24,17 +24,15 @@ public class MaquinaCTController {
 
 	@Autowired
 	private MaquinaCTService maquinaCTService;
-	
-	
+
 	@PostMapping("/save")
 	public ResponseEntity<MaquinasCTModel> save(@RequestBody MaquinasCTModel maquinaCT) {
 		return ResponseEntity.ok(maquinaCTService.save(maquinaCT));
 	}
 
 	@GetMapping("/id/{id}")
-	public ResponseEntity<Optional<MaquinasCTModel>> MaquinaById(@PathVariable Long id) {
-		return ResponseEntity.ok(maquinaCTService.MaquinaCTById(id));
+	public ResponseEntity<Optional<MaquinasCTModel>> maquinaById(@PathVariable Long id) {
+		return ResponseEntity.ok(maquinaCTService.maquinaCTById(id));
 	}
-	
-	
+
 }

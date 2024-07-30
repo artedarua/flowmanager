@@ -1,4 +1,5 @@
 package com.FlowManagerAPI.model;
+
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -27,10 +28,9 @@ public class LogModel {
 
 	@Column(name = "fma99_data_log")
 	private LocalDateTime dataLog;
-	
+
 	@Column(name = "fma99_conteudo_hardware")
 	private String conteudoLog;
-
 
 	public LocalDateTime getDataLog() {
 		return dataLog;
@@ -48,7 +48,4 @@ public class LogModel {
 		this.conteudoLog = conteudoLog;
 	}
 
-
-	
-	
 }

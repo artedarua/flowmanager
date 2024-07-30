@@ -8,9 +8,8 @@ import org.springframework.stereotype.Repository;
 import com.FlowManagerAPI.model.ProdutoModel;
 
 @Repository
-public interface ProdutoRepository extends JpaRepository <ProdutoModel, Long>  {
-	
+public interface ProdutoRepository extends JpaRepository<ProdutoModel, Long> {
+
 	@Query("SELECT p FROM ProdutoModel p")
 	List<ProdutoModel> findByTodosProdutos();
 }
-

@@ -7,8 +7,6 @@ import com.FlowManagerAPI.model.MaquinasCTModel;
 import com.FlowManagerAPI.model.PedidoVendaModel;
 
 @Repository
-public interface PedidoVendaRepository  extends JpaRepository <PedidoVendaModel, Long>  {
+public interface PedidoVendaRepository extends JpaRepository<PedidoVendaModel, Long> {
 
 }
-
-

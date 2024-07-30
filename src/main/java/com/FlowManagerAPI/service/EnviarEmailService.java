@@ -11,21 +11,22 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 public class EnviarEmailService {
-    
-    private final JavaMailSender javaMailSender;
+
+	private final JavaMailSender javaMailSender;
 
 	@Autowired
-    public EnviarEmailService(JavaMailSender javaMailSender) {
-        this.javaMailSender = javaMailSender;
-    }
-	public void EnviarEmail(String para, String titulo, String conteudo) {
-		
-		SimpleMailMessage  mensagem = new SimpleMailMessage();
-        mensagem.setTo(para);
+	public EnviarEmailService(JavaMailSender javaMailSender) {
+		this.javaMailSender = javaMailSender;
+	}
 
-        mensagem.setSubject(titulo);
-        mensagem.setText(conteudo);
-        javaMailSender.send(mensagem);
-        
-    }	
+	public void EnviarEmail(String para, String titulo, String conteudo) {
+
+		SimpleMailMessage mensagem = new SimpleMailMessage();
+		mensagem.setTo(para);
+
+		mensagem.setSubject(titulo);
+		mensagem.setText(conteudo);
+		javaMailSender.send(mensagem);
+
+	}
 }

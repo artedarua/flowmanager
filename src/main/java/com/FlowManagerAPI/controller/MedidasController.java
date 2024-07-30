@@ -24,16 +24,15 @@ public class MedidasController {
 
 	@Autowired
 	private MedidasService medidasService;
-	
-	
+
 	@PostMapping("/save")
 	public ResponseEntity<MedidasModel> save(@RequestBody MedidasModel medidas) {
 		return ResponseEntity.ok(medidasService.save(medidas));
 	}
 
 	@GetMapping("/id/{id}")
-	public ResponseEntity<Optional<MedidasModel>> MedidasById(@PathVariable Long id) {
-		return ResponseEntity.ok(medidasService.MedidasById(id));
+	public ResponseEntity<Optional<MedidasModel>> medidasById(@PathVariable Long id) {
+		return ResponseEntity.ok(medidasService.medidasById(id));
 	}
-	
+
 }

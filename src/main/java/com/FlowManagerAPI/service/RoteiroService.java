@@ -16,12 +16,12 @@ public class RoteiroService {
 
 	@Autowired
 	private RoteiroRepository roteiroRepository;
-	
+
 	public RoteiroModel save(RoteiroModel roteiroModel) {
 		return roteiroRepository.save(roteiroModel);
 	}
-	
-	public Optional<RoteiroModel> RoteiroById(Long idRoteiro) {
+
+	public Optional<RoteiroModel> roteiroById(Long idRoteiro) {
 		return roteiroRepository.findById(idRoteiro);
 	}
 }

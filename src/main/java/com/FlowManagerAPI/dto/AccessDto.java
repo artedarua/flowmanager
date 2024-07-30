@@ -1,17 +1,17 @@
 package com.FlowManagerAPI.dto;
 
 public class AccessDto {
-	
-private String token;
-private String tipoUsuario;
-private String ativoUsuario;
 
-	public AccessDto(String token,String tipoUsuario) {
+	private String token;
+	private String tipoUsuario;
+	private String ativoUsuario;
+
+	public AccessDto(String token, String tipoUsuario) {
 		super();
 		this.token = token;
-		this.tipoUsuario=tipoUsuario;
+		this.tipoUsuario = tipoUsuario;
 	}
-	
+
 	public AccessDto(String token, String tipoUsuario, String ativoUsuario) {
 		super();
 		this.token = token;
@@ -42,5 +42,5 @@ private String ativoUsuario;
 	public void setAtivoUsuario(String ativoUsuario) {
 		this.ativoUsuario = ativoUsuario;
 	}
-	
+
 }

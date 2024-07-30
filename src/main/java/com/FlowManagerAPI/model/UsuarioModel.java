@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class UsuarioModel {
 
 	@Id
@@ -52,7 +53,6 @@ public class UsuarioModel {
 
 	@Column(name = "fma5_celular_usuario")
 	private String celularUsuario;
-
 
 	@Column(name = "fma5_ativo_usuario")
 	private String ativoUsuario;
@@ -120,7 +120,6 @@ public class UsuarioModel {
 	public void setCelularUsuario(String celularUsuario) {
 		this.celularUsuario = celularUsuario;
 	}
-
 
 	public String getAtivoUsuario() {
 		return ativoUsuario;
