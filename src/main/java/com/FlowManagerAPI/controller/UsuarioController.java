@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.FlowManagerAPI.model.MedidasModel;
@@ -49,9 +50,11 @@ public class UsuarioController {
 	}
 
 	@PutMapping("/atualizar")
-	public ResponseEntity<String> atualizarSenha(@RequestBody UsuarioModel usuario) {
-		usuario.setSenhaUsuario(passwordEncoder.encode(usuario.getSenhaUsuario()));
-		return ResponseEntity.ok(usuarioService.atualizarSenha(usuario));
+	public ResponseEntity<String> atualizarSenha(
+			@RequestParam String nomeUsuario,
+	        @RequestParam String senhaUsuario) {
+		senhaUsuario = passwordEncoder.encode(senhaUsuario);
+		return ResponseEntity.ok(usuarioService.atualizarSenha(nomeUsuario, senhaUsuario));
 	}
 
 	@PutMapping("/atualiza/info")
@@ -59,10 +62,24 @@ public class UsuarioController {
 		return ResponseEntity.ok(usuarioService.atualizarInfo(usuario));
 	}
 
-	@PostMapping("/recuperar/{usuarioLogin}/{secreta}")
-	public ResponseEntity<String> recuperarUsuarioByLogin(@PathVariable String usuarioLogin,
-			@PathVariable String secreta) {
-		return ResponseEntity.ok(usuarioService.recuperarUsuarioByLogin(usuarioLogin, secreta));
+	@PostMapping("/recuperarSenha")
+	public ResponseEntity<UsuarioModel> recuperarUsuarioByLogin( @RequestParam String loginUsuario,
+	        @RequestParam String emailUsuario) {
+		    		
+		return ResponseEntity.ok(usuarioService.recuperarUsuarioByLogin(loginUsuario, emailUsuario));
+	}
+	
+	@GetMapping("/todos")
+	public ResponseEntity<List<UsuarioModel>> usuarioByAll(
+	        @RequestParam String nomeUsuario,
+	        @RequestParam String loginUsuario,
+	        @RequestParam String emailUsuario,
+	       @RequestParam(defaultValue = "N") String nivelAcessoUsuario,
+	        @RequestParam String celularUsuario,
+	        @RequestParam String ativoUsuario) {
+		
+	    return  ResponseEntity.ok(usuarioService.mostrarUsuarios(nomeUsuario,loginUsuario,
+	    		emailUsuario,nivelAcessoUsuario, celularUsuario, ativoUsuario)) ;
 	}
 
 }

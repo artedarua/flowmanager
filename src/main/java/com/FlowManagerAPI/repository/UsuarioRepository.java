@@ -22,9 +22,26 @@ public interface UsuarioRepository extends JpaRepository<UsuarioModel, Long> {
 	@Query("SELECT u FROM UsuarioModel u WHERE u.loginUsuario = :loginUsuario")
 	UsuarioModel findByLoginDesativar(@Param("loginUsuario") String loginUsuario);
 
-	@Query("SELECT u FROM UsuarioModel u WHERE u.loginUsuario = :loginUsuario")
-	UsuarioModel findByLoginRecuperar(@Param("loginUsuario") String loginUsuario);
+	@Query("SELECT u FROM UsuarioModel u WHERE u.loginUsuario = :loginUsuario and  u.emailUsuario = :emailUsuario")
+	UsuarioModel findByLoginRecuperar(@Param("loginUsuario") String loginUsuario, @Param("emailUsuario") String emailUsuario);
 
+	@Query("SELECT u FROM UsuarioModel u WHERE " +
+		       "(u.nomeUsuario IS NOT NULL AND u.nomeUsuario != '') AND " +
+		       "(u.loginUsuario IS NOT NULL AND u.loginUsuario != '') AND " +
+		       "(u.emailUsuario IS NOT NULL AND u.emailUsuario != '') AND " +
+		       "(u.nivelAcessoUsuario IS NOT NULL AND u.nivelAcessoUsuario != '') AND " +
+		       "(u.celularUsuario IS NOT NULL AND u.celularUsuario != '') AND " +
+		       "(u.ativoUsuario IS NOT NULL AND u.ativoUsuario != '0')")
+		List<UsuarioModel> findByUsuario(@Param("nomeUsuario") String nomeUsuario,
+		                                 @Param("loginUsuario") String loginUsuario,
+		                                 @Param("emailUsuario") String emailUsuario,
+		                                 @Param("nivelAcessoUsuario") String nivelAcessoUsuario,
+		                                 @Param("celularUsuario") String celularUsuario,
+		                                 @Param("ativoUsuario") String ativoUsuario);
+	
+	@Query("SELECT u FROM UsuarioModel u WHERE u.emailUsuario= :emailUsuario")
+	List<UsuarioModel> findByEmail(@Param("emailUsuario") String emailUsuario);
+	
 	@Transactional
 	@Modifying
 	@Query("UPDATE UsuarioModel u SET u.senhaUsuario = :novaSenha WHERE u.loginUsuario = :loginUsuario")

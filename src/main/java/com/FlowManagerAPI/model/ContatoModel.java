@@ -24,7 +24,7 @@ public class ContatoModel {
 	private Long idContatoCliente;
 
 	@Column(name = "fma12_contato_ContatoCliente")
-	private String contatoContatoCliente;
+	private String nomeContatoCliente;
 
 	@Column(name = "fma12_email_ContatoCliente")
 	private String emailContatocliente;
@@ -40,13 +40,6 @@ public class ContatoModel {
 		this.idContatoCliente = idContatoCliente;
 	}
 
-	public String getContatoContatoCliente() {
-		return contatoContatoCliente;
-	}
-
-	public void setContatoContatoCliente(String contatoContatoCliente) {
-		this.contatoContatoCliente = contatoContatoCliente;
-	}
 
 	public String getEmailContatocliente() {
 		return emailContatocliente;
@@ -62,6 +55,14 @@ public class ContatoModel {
 
 	public void setTelContatocliente(String telContatocliente) {
 		this.telContatocliente = telContatocliente;
+	}
+
+	public String getNomeContatoCliente() {
+		return nomeContatoCliente;
+	}
+
+	public void setNomeContatoCliente(String nomeContatoCliente) {
+		this.nomeContatoCliente = nomeContatoCliente;
 	}
 
 }

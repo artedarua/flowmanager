@@ -1,5 +1,6 @@
 package com.FlowManagerAPI.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,8 +35,11 @@ public class ClienteModel {
 
 	@Column(name = "fma11_obs_cliente")
 	private String obsClienteCliente;
+	
+    @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+	private ProdutoModel produto;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fma11_contato_cliente", referencedColumnName = "fma12_id_contatocliente")
 	private ContatoModel contatoCliente;
 
@@ -76,6 +81,14 @@ public class ClienteModel {
 
 	public void setContatoCliente(ContatoModel contatoCliente) {
 		this.contatoCliente = contatoCliente;
+	}
+
+	public ProdutoModel getProduto() {
+		return produto;
+	}
+
+	public void setProduto(ProdutoModel produto) {
+		this.produto = produto;
 	}
 
 }

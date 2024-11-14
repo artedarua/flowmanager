@@ -1,8 +1,11 @@
 package com.FlowManagerAPI.service;
 
+import java.security.SecureRandom;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -24,6 +27,9 @@ public class UsuarioService {
 
 	@Autowired
 	private LogService logBd;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	public UsuarioModel save(UsuarioModel usuarioModel) {
 
@@ -31,9 +37,8 @@ public class UsuarioService {
 		// setar usuario ativo
 		usuario.setAtivoUsuario("A");
 
-		String Conteudo = "Foi realizado o cadastro de seu Usuario para acesso ao sistema 'FlowManager'. O Seu Usuario é '"
-				+ usuario.getLoginUsuario() + "'," + " em caso de perda de senha favor utilizar a palavra secreta '"
-				+ usuario.getSecretoUsuario() + "' juntamente com seu login para trocar a senha na tela de login.";
+		String Conteudo = "Foi realizado o cadastro de seu usuário para acesso ao sistema FlowManager. "
+				+ "O seu Usuario  do sistema é '"+ usuario.getLoginUsuario() + "',";
 
 		emailSend.EnviarEmail(usuario.getEmailUsuario(), " FlowManager-Sistema", Conteudo);
 
@@ -55,22 +60,13 @@ public class UsuarioService {
 		return usuarioRepository.save(usuario);
 	}
 
-	public String atualizarSenha(UsuarioModel usuarioModel) {
+	public String atualizarSenha(String usuario, String senha) {
 
-		UsuarioModel usuario = usuarioModel;
-		UsuarioModel usuarioEmail = (UsuarioModel) usuarioRepository.findByLoginRecuperar(usuario.getLoginUsuario());
+		usuarioRepository.atualizarSenhar(usuario, senha);
 
-		usuario.setEmailUsuario(usuarioEmail.getEmailUsuario());
-		String Conteudo = "Foi realizada a atualização da senha para o usaurio '" + usuario.getLoginUsuario() + "'";
-		emailSend.EnviarEmail(usuario.getEmailUsuario(), " FlowManager-Sistema", Conteudo);
-
-		int validarRetorno = usuarioRepository.atualizarSenhar(usuario.getLoginUsuario(), usuario.getSenhaUsuario());
-
-		if (validarRetorno > 0) {
-			return "OK";
-		} else {
-			return "NOK";
-		}
+		String Conteudo = "Foi realizada a atualização da senha para o usuario '" + usuario + "'";
+	
+		 return null;
 	}
 
 	public String atualizarInfo(UsuarioModel usuarioModel) {
@@ -93,19 +89,58 @@ public class UsuarioService {
 		}
 	}
 
-	public String recuperarUsuarioByLogin(String usuarioLogin, String secreta) {
-		UsuarioModel usuario = new UsuarioModel();
+	public UsuarioModel recuperarUsuarioByLogin(String usuarioLogin, String emailUsuario) {
 
-		usuario = (UsuarioModel) usuarioRepository.findByLoginRecuperar(usuarioLogin);
+		UsuarioModel usuario;
+		
+		usuario = usuarioRepository.findByLoginRecuperar(usuarioLogin, emailUsuario);
+		if(!usuario.equals(null)){
+			String senha =gerarSenha() ;
+			
+			usuario.setSenhaUsuario(passwordEncoder.encode(senha));
 
-		if (usuario.getSecretoUsuario().equals(secreta)) {
+			
+			String Conteudo = "Foi realizado a atualização da senha do seu usuario '"+ usuario.getLoginUsuario() + "'"
+					+ " e senha "+senha+", favor realizar a troca." ;
 
-			return "OK";
-
-		} else {
-			return "NOK";
+			emailSend.EnviarEmail(usuario.getEmailUsuario(), "FlowManager-Sistema", Conteudo);
+			
+			return usuarioRepository.save(usuario);
+		}else {
+			return null;
 		}
+	
 
 	}
 
+	public List<UsuarioModel> mostrarUsuarios(String nomeUsuario, String loginUsuario, String emailUsuario,
+			String nivelAcessoUsuario, String celularUsuario, String ativoUsuario) {
+
+		return usuarioRepository.findByUsuario(nomeUsuario, loginUsuario, emailUsuario, nivelAcessoUsuario,
+				celularUsuario, ativoUsuario);
+	}
+
+	public List<UsuarioModel> mostrarUsuarioByAll(String Email) {
+
+		return null;
+	}
+	
+	public String gerarSenha() {
+		
+        String caracteresPermitidos = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        
+        SecureRandom random = new SecureRandom();
+        
+        int comprimento=12;
+        StringBuilder senha = new StringBuilder(comprimento);
+        
+        for (int i = 0; i < comprimento; i++) {
+            // Escolher um caractere aleatório do conjunto de caracteres permitidos
+            int indice = random.nextInt(caracteresPermitidos.length());
+            senha.append(caracteresPermitidos.charAt(indice));
+        }
+        
+        // Retornar a senha gerada
+        return senha.toString();
+	}
 }

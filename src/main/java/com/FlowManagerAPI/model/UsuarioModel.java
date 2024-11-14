@@ -33,7 +33,7 @@ public class UsuarioModel {
 	private String loginUsuario;
 
 	@NotNull
-	@Column(name = "fma5_email_usuario")
+	@Column(name = "fma5_email_usuario", unique = true)
 	private String emailUsuario;
 
 	@NotNull

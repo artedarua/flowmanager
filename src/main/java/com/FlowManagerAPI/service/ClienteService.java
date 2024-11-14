@@ -1,5 +1,6 @@
 package com.FlowManagerAPI.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,9 @@ public class ClienteService {
 
 	public Optional<ClienteModel> clienteById(Long idCliente) {
 		return clienteRepository.findById(idCliente);
+	}
+	
+	public List<ClienteModel> clienteByAll() {
+		return clienteRepository.findAll();
 	}
 }

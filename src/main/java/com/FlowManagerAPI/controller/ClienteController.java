@@ -1,5 +1,6 @@
 package com.FlowManagerAPI.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,4 +36,8 @@ public class ClienteController {
 		return ResponseEntity.ok(clienteService.clienteById(id));
 	}
 
+	@GetMapping("/all")
+	public ResponseEntity<List<ClienteModel>> clienteByAll(@RequestBody ClienteModel cliente) {
+		return ResponseEntity.ok(clienteService.clienteByAll());
+	}
 }
